@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <PluginProvider enableRouting initialEntries={["/bamboo"]}>
+        <PluginProvider enableRouting initialEntries={["/bamboo_plans"]}>
           <AppTabs />
         </PluginProvider>
       </QueryClientProvider>

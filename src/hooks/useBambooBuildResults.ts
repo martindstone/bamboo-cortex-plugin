@@ -2,23 +2,25 @@ import { useQuery } from "@tanstack/react-query";
 
 export interface UseBambooPlansProps {
   bambooApiBaseUrl: string;
+  project: string;
+  buildKey: string;
   expand?: string;
 };
 
-export const useBambooPlans = ({
+export const useBambooBuildResults = ({
   bambooApiBaseUrl,
+  project,
+  buildKey,
   expand
 }: UseBambooPlansProps) => {
-  // Fetch the Bamboo plans using the provided API base URL and expand parameter
   const query = useQuery({
-    queryKey: ["bambooPlans"],
+    queryKey: ["bamboBuildResults"],
     queryFn: async () => {
       const url = new URL(bambooApiBaseUrl);
-      url.pathname = "/rest/api/latest/plan";
+      url.pathname = `/rest/api/latest/result/${project}-${buildKey}`;
       if (expand) {
         url.searchParams.append("expand", expand);
       }
-    
       const response = await fetch(url.toString(), {
         method: "GET",
         headers: {
@@ -27,16 +29,16 @@ export const useBambooPlans = ({
       });
       return response.json();
     },
-    enabled: !!bambooApiBaseUrl,
+    enabled: !!bambooApiBaseUrl && !!project && !!buildKey,
     retry: false,
   });
 
   return {
-    plans: query.data?.plans ?? [],
+    results: query.data?.results?.result ?? [],
     isLoading: query.isLoading,
     isFetching: query.isFetching,
     error: query.error,
   };
 }
 
-export default useBambooPlans;
+export default useBambooBuildResults;

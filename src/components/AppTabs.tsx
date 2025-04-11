@@ -11,7 +11,8 @@ import {
   CardContent,
 } from "@cortexapps/react-plugin-ui";
 
-import Bamboo from "./Bamboo";
+import BambooPlans from "./BambooPlans";
+import BambooEntityView from "./BambooEntityView";
 import Components from "./Components";
 import PluginContext from "./PluginContext";
 import EntityDetails from "./EntityDetails";
@@ -31,7 +32,8 @@ export const AppTabs: React.FC = () => {
   const navigate = useNavigate();
 
   const tabRoutes: TabRoute[] = [
-    { label: "Bamboo", path: "/bamboo", element: <Bamboo /> },
+    { label: "Bamboo Plans", path: "/bamboo_plans", element: <BambooPlans /> },
+    { label: "Bamboo Results", path: "/bamboo_entity", element: <BambooEntityView /> },
     { label: "Components", path: "/basic", element: <Components /> },
     { label: "Context", path: "/context", element: <PluginContext /> },
     { label: "Entity", path: "/entity", element: <EntityDetails /> },

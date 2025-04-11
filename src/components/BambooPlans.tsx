@@ -26,7 +26,7 @@ import JsonView from "./JsonView";
 
 import "../tableStyles.css";
 
-export const Bamboo: React.FC = () => {
+export const BambooPlans: React.FC = () => {
   const {
     bambooOrigin,
     isLoading: isLoadingConfig,
@@ -156,4 +156,4 @@ export const Bamboo: React.FC = () => {
   );
 };
 
-export default Bamboo;
+export default BambooPlans;
